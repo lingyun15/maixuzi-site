@@ -1,0 +1,92 @@
+backend:
+  name: github
+  repo: lingyun15/maixuzi-site
+  branch: main
+  # Cloudflare Pages 没有 Netlify Identity，需要后续配置 OAuth 网关。
+  # 配好后取消下面两行注释，并替换为你的 OAuth 网关地址：
+  # base_url: https://你的-oauth-worker域名
+  # auth_endpoint: auth
+
+locale: zh_Hans
+media_folder: docs/public/uploads
+public_folder: /uploads
+publish_mode: simple
+
+site_url: https://maixuzi.cn
+display_url: https://maixuzi.cn
+logo_url: https://maixuzi.cn/favicon.ico
+
+collections:
+  - name: ai_callbot
+    label: AI 电销机器人
+    folder: docs/ai-callbot
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: decoration_ai_service
+    label: 装修 AI 客服
+    folder: docs/decoration-ai-service
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: sketchup_d5
+    label: SketchUp + D5
+    folder: docs/sketchup-d5
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: workday_tool
+    label: 工天管理工具
+    folder: docs/workday-tool
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: templates
+    label: 模板工具
+    folder: docs/templates
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: settings
+    label: 站点关键文件
+    files:
+      - label: llms.txt
+        name: llms
+        file: docs/public/llms.txt
+        fields:
+          - { label: 内容, name: body, widget: text }
+      - label: robots.txt
+        name: robots
+        file: docs/public/robots.txt
+        fields:
+          - { label: 内容, name: body, widget: text }
