@@ -2,10 +2,8 @@ backend:
   name: github
   repo: lingyun15/maixuzi-site
   branch: main
-  # Cloudflare Pages 没有 Netlify Identity，需要后续配置 OAuth 网关。
-  # 配好后取消下面两行注释，并替换为你的 OAuth 网关地址：
-  # base_url: https://你的-oauth-worker域名
-  # auth_endpoint: auth
+  base_url: https://maixuzi-cms-oauth.635116278.workers.dev
+  auth_endpoint: auth
 
 locale: zh_Hans
 media_folder: docs/public/uploads
