@@ -2,7 +2,7 @@ backend:
   name: github
   repo: lingyun15/maixuzi-site
   branch: main
-  base_url: https://maixuzi-cms-oauth.635116278.workers.dev
+  base_url: https://maixuzi.cn
   auth_endpoint: auth
 
 locale: zh_Hans
