@@ -1,0 +1,6 @@
+name = "maixuzi-cms-oauth"
+main = "decap-oauth-worker.js"
+compatibility_date = "2026-06-20"
+
+[vars]
+GITHUB_CLIENT_ID = "Ov23limJUF5QvIW8Fjr7"
