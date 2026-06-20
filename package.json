@@ -1,0 +1,15 @@
+{
+  "name": "maixuzi-site",
+  "version": "1.0.0",
+  "description": "麦须子装修 AI 工具库：AI 电销机器人、装修 AI 客服、SketchUp+D5、工天管理工具。",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --host 0.0.0.0",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vitepress": "latest"
+  }
+}
