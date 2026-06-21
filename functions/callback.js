@@ -24,7 +24,7 @@ function popupScript(payload) {
   function send() {
     count += 1;
     if (window.opener && !window.opener.closed) {
-      window.opener.postMessage(message, '*');
+      window.opener.postMessage(message, window.location.origin);
     }
     if (count < 5) {
       setTimeout(send, 350);
@@ -59,7 +59,7 @@ function errorScript(message) {
   function send() {
     count += 1;
     if (window.opener && !window.opener.closed) {
-      window.opener.postMessage(message, '*');
+      window.opener.postMessage(message, window.location.origin);
     }
     if (count < 5) {
       setTimeout(send, 350);
