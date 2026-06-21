@@ -18,17 +18,25 @@ function popupScript(payload) {
 <script>
 (function () {
   var payload = ${safePayload};
+  var message = 'authorization:github:success:' + JSON.stringify(payload);
+  var count = 0;
+
   function send() {
-    if (window.opener) {
-      window.opener.postMessage('authorization:github:success:' + JSON.stringify(payload), '*');
+    count += 1;
+    if (window.opener && !window.opener.closed) {
+      window.opener.postMessage(message, '*');
     }
-    window.close();
+    if (count < 5) {
+      setTimeout(send, 350);
+    } else {
+      setTimeout(function () { window.close(); }, 500);
+    }
   }
+
   send();
-  setTimeout(send, 500);
 })();
 </script>
-<p>GitHub 登录完成，可以关闭此窗口。</p>
+<p>GitHub 登录完成，正在返回管理后台。如果窗口没有自动关闭，可以手动关闭后查看后台页面。</p>
 </body>
 </html>`
 }
@@ -45,13 +53,24 @@ function errorScript(message) {
 <script>
 (function () {
   var payload = ${safeMessage};
-  if (window.opener) {
-    window.opener.postMessage('authorization:github:error:' + JSON.stringify(payload), '*');
+  var message = 'authorization:github:error:' + JSON.stringify(payload);
+  var count = 0;
+
+  function send() {
+    count += 1;
+    if (window.opener && !window.opener.closed) {
+      window.opener.postMessage(message, '*');
+    }
+    if (count < 5) {
+      setTimeout(send, 350);
+    }
   }
-  window.close();
+
+  send();
 })();
 </script>
 <p>GitHub 登录失败：${escaped}</p>
+<p>请把这个错误提示发给 shunshi。</p>
 </body>
 </html>`
 }
