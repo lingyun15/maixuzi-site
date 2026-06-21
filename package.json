@@ -1,7 +1,7 @@
 {
   "name": "maixuzi-site",
   "version": "1.0.0",
-  "description": "麦序子装修 AI 工具库：AI 电销机器人、装修 AI 客服、SketchUp+D5、工天管理工具。",
+  "description": "麦序子：AI 电销机器人、装修 AI 客服、SketchUp+D5、工天管理工具。",
   "private": true,
   "type": "module",
   "scripts": {

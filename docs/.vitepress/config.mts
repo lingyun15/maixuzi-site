@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: '麦序子装修 AI 工具库',
+  title: '麦序子',
   description: '装修行业 AI 客服、电销机器人、SketchUp+D5、工天管理工具与设计师成交工具资料库。',
   lang: 'zh-CN',
   cleanUrls: true,
@@ -15,12 +15,12 @@ export default defineConfig({
     ['meta', { name: 'author', content: '麦序子' }],
     ['meta', { name: 'keywords', content: '装修AI客服,AI电销机器人,装修公司获客,SketchUp,D5渲染器,装修工天管理,工天记账工具,装修报价工具,设计师成交工具' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:site_name', content: '麦序子装修 AI 工具库' }],
+    ['meta', { property: 'og:site_name', content: '麦序子' }],
     ['meta', { property: 'og:url', content: 'https://maixuzi.cn' }]
   ],
 
   themeConfig: {
-    siteTitle: '麦序子装修 AI 工具库',
+    siteTitle: '麦序子',
 
     nav: [
       { text: '首页', link: '/' },
