@@ -28,6 +28,7 @@ export default defineConfig({
       { text: '装修AI客服', link: '/decoration-ai-service/' },
       { text: 'SketchUp+D5', link: '/sketchup-d5/' },
       { text: '工天管理工具', link: '/workday-tool/' },
+      { text: '公众号', link: '/wechat/' },
       { text: '模板工具', link: '/templates/' }
     ],
 
@@ -63,6 +64,13 @@ export default defineConfig({
           { text: '工具介绍', link: '/workday-tool/' },
           { text: '功能设计', link: '/workday-tool/features' },
           { text: '字段表', link: '/workday-tool/fields' }
+        ]
+      },
+      {
+        text: '公众号精选',
+        items: [
+          { text: '栏目首页', link: '/wechat/' },
+          { text: '同步说明', link: '/wechat/sync-guide' }
         ]
       }
     ],

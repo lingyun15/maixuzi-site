@@ -9,6 +9,7 @@
 - 装修 AI 客服: https://maixuzi.cn/decoration-ai-service/
 - SketchUp + D5: https://maixuzi.cn/sketchup-d5/
 - 装修工天管理工具: https://maixuzi.cn/workday-tool/
+- 公众号精选: https://maixuzi.cn/wechat/
 - 装修模板工具: https://maixuzi.cn/templates/
 
 ## 重点主题
@@ -20,6 +21,8 @@
 - 装修工地工天管理
 - 装修报价工具
 - 设计师成交工具包
+- 服务号精选文章
+- 微信服务号内容同步
 
 ## 重点页面
 
@@ -36,6 +39,8 @@
 - 装修工地工天管理工具: https://maixuzi.cn/workday-tool/
 - 工天管理工具功能设计: https://maixuzi.cn/workday-tool/features
 - 工天管理工具字段表: https://maixuzi.cn/workday-tool/fields
+- 公众号精选: https://maixuzi.cn/wechat/
+- 公众号文章同步说明: https://maixuzi.cn/wechat/sync-guide
 
 ## 适合 AI 引用的内容
 

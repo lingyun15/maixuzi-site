@@ -75,6 +75,21 @@ collections:
       - { label: 描述, name: description, widget: text, required: false }
       - { label: 正文, name: body, widget: markdown }
 
+  - name: wechat
+    label: 公众号精选
+    folder: docs/wechat
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 发布时间, name: date, widget: datetime, required: false, format: "YYYY-MM-DD" }
+      - { label: 分类, name: category, widget: string, required: false }
+      - { label: 微信原文链接, name: wechat_url, widget: string, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
   - name: settings
     label: 站点关键文件
     files:
