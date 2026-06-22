@@ -4,6 +4,7 @@ description: 在人工智能领域，AI
   Agents（智能体）正成为技术演进的新范式。从代码生成到多模态交互，从学术研究到产业落地，不同团队基于技术路径与场景需求，孵化出各具特色的AI
   Agents。本文聚焦Claude
   Code、Claude、Codex、OpenClaw与Hermes五大代表性模型，通过技术架构、核心能力、应用场景等多维度对比，解析其差异化优势与局限性，为技术选型与行业应用提供参考。
+date: 2026-06-22
 category: 软件
 wechat_url: https://mp.weixin.qq.com/s/R7hNRwGqaG_udvDbxV2ANQ
 ---
@@ -90,3 +91,4 @@ Hermes
 5.通用场景探索：选Codex（兼顾广度与深度）。
 结语
 Claude Code、Claude、Codex、OpenClaw与Hermes的差异化发展，映射出AI Agents从“学术玩具”到“产业基石”的蜕变之路。没有万能模型，只有最适合场景的选择。在技术飞速迭代的今天，理解各模型的核心价值与边界，将帮助我们在AI浪潮中把握机遇，构建人机协同的新范式。未来，AI Agents的竞争将不仅是技术的较量，更是对场景理解深度与生态构建能力的终极考验。
+https://mp.weixin.qq.com/s/R7hNRwGqaG_udvDbxV2ANQ服务号 麦序子
