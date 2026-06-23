@@ -1,0 +1,10 @@
+{
+  "type": "gzip-chunks",
+  "parts": [
+    "model.obj.gz.part00",
+    "model.obj.gz.part01",
+    "model.obj.gz.part02",
+    "model.obj.gz.part03"
+  ],
+  "size": 29439574
+}

@@ -87,7 +87,7 @@ function materialFallback(object) {
 }
 
 async function loadModel() {
-  const objPath = './models/model.obj.gz'
+  const manifestPath = './models/model.obj.gz.json'
 
   const objLoader = new OBJLoader()
 
@@ -105,10 +105,28 @@ async function loadModel() {
   }
 
   try {
-    setStatus('正在下载压缩模型，首次打开可能需要一会儿...')
-    const response = await fetch(objPath)
-    if (!response.ok) throw new Error(`HTTP ${response.status}`)
-    const compressed = new Uint8Array(await response.arrayBuffer())
+    setStatus('正在下载模型清单...')
+    const manifestResponse = await fetch(manifestPath)
+    if (!manifestResponse.ok) throw new Error(`Manifest HTTP ${manifestResponse.status}`)
+    const manifest = await manifestResponse.json()
+    const buffers = []
+    let loaded = 0
+    for (const part of manifest.parts) {
+      setStatus(`正在下载模型分片 ${loaded + 1}/${manifest.parts.length} ...`)
+      const response = await fetch(`./models/${part}`)
+      if (!response.ok) throw new Error(`${part} HTTP ${response.status}`)
+      const buffer = new Uint8Array(await response.arrayBuffer())
+      buffers.push(buffer)
+      loaded += 1
+    }
+    setStatus('正在合并模型分片...')
+    const total = buffers.reduce((sum, item) => sum + item.length, 0)
+    const compressed = new Uint8Array(total)
+    let offset = 0
+    for (const buffer of buffers) {
+      compressed.set(buffer, offset)
+      offset += buffer.length
+    }
     setStatus('正在解压模型...')
     const objText = pako.ungzip(compressed, { to: 'string' })
     setStatus('正在解析 OBJ 模型...')
@@ -119,7 +137,7 @@ async function loadModel() {
     setStatus('模型加载成功：拖动鼠标即可查看。', 'ok')
   } catch (err) {
     console.error(err)
-    setStatus('模型加载失败：请确认 models/model.obj.gz 存在，或模型文件过大导致浏览器内存不足。', 'error')
+    setStatus('模型加载失败：请确认模型分片存在，或模型过大导致浏览器内存不足。', 'error')
   }
 }
 
