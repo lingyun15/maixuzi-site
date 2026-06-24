@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>私人别墅全景预览</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <style>
+    html, body, #panorama { width: 100%; height: 100%; margin: 0; background: #111; }
+    .label {
+      position: fixed; left: 14px; top: 14px; z-index: 10;
+      color: #fff; background: rgba(0,0,0,.55); padding: 10px 12px;
+      border-radius: 10px; font: 14px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="panorama"></div>
+  <div class="label">私人别墅全景预览<br>拖动查看空间方向</div>
+  <script>
+    pannellum.viewer('panorama', {
+      type: 'cubemap',
+      cubeMap: [
+        'pano01.jpg',
+        'pano02.jpg',
+        'pano03.jpg',
+        'pano04.jpg',
+        'pano05.jpg',
+        'pano06.jpg'
+      ],
+      autoLoad: true,
+      showControls: true,
+      compass: false,
+      hfov: 100,
+      minHfov: 45,
+      maxHfov: 120,
+      backgroundColor: [17, 17, 17]
+    })
+  </script>
+</body>
+</html>
