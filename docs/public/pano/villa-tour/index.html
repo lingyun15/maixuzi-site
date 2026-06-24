@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>私人别墅全景漫游</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <style>
+    html, body, #panorama { width: 100%; height: 100%; margin: 0; background: #111; }
+    .topbar {
+      position: fixed; left: 14px; top: 14px; z-index: 10;
+      color: #fff; background: rgba(0,0,0,.58); padding: 10px 12px;
+      border-radius: 12px; font: 14px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+    }
+    .topbar strong { display: block; margin-bottom: 6px; font-size: 15px; }
+    .room-nav { display: flex; flex-wrap: wrap; gap: 6px; max-width: 380px; }
+    .room-nav button {
+      border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.12); color: #fff;
+      border-radius: 999px; padding: 5px 9px; cursor: pointer; font-size: 12px;
+    }
+    .room-nav button:hover { background: rgba(255,255,255,.22); }
+    .hint {
+      position: fixed; right: 14px; bottom: 14px; z-index: 10;
+      color: #fff; background: rgba(0,0,0,.5); padding: 8px 10px; border-radius: 10px;
+      font: 12px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .custom-hotspot {
+      height: 34px; min-width: 34px; padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(20, 110, 255, .92);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,.28);
+      font: 13px/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      white-space: nowrap;
+    }
+    .custom-hotspot::before { content: '➜'; margin-right: 4px; }
+  </style>
+</head>
+<body>
+  <div id="panorama"></div>
+  <div class="topbar">
+    <strong>私人别墅全景漫游</strong>
+    <div class="room-nav">
+      <button data-scene="living">客厅</button>
+      <button data-scene="kitchen">厨房</button>
+      <button data-scene="stairs">楼梯</button>
+      <button data-scene="bedroom1">卧室1</button>
+      <button data-scene="bedroom2">卧室2</button>
+      <button data-scene="bathroom">卫生间</button>
+    </div>
+  </div>
+  <div class="hint">拖动查看，点击蓝色热点切换房间</div>
+
+  <script>
+    function hotspotDiv(hotSpotDiv, args) {
+      hotSpotDiv.classList.add('custom-hotspot')
+      hotSpotDiv.textContent = args.label
+    }
+
+    function cube(room) {
+      return [
+        `scenes/${room}/pano01.jpg`,
+        `scenes/${room}/pano02.jpg`,
+        `scenes/${room}/pano03.jpg`,
+        `scenes/${room}/pano04.jpg`,
+        `scenes/${room}/pano05.jpg`,
+        `scenes/${room}/pano06.jpg`
+      ]
+    }
+
+    const viewer = pannellum.viewer('panorama', {
+      default: {
+        firstScene: 'living',
+        sceneFadeDuration: 900,
+        autoLoad: true,
+        hfov: 100,
+        minHfov: 45,
+        maxHfov: 120,
+        showControls: true,
+        compass: false,
+        backgroundColor: [17, 17, 17]
+      },
+      scenes: {
+        living: {
+          title: '客厅',
+          type: 'cubemap',
+          cubeMap: cube('living'),
+          hotSpots: [
+            { pitch: -6, yaw: 35, type: 'scene', sceneId: 'kitchen', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '厨房' } },
+            { pitch: -4, yaw: -40, type: 'scene', sceneId: 'stairs', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '楼梯' } },
+            { pitch: -5, yaw: 110, type: 'scene', sceneId: 'bedroom1', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '卧室1' } }
+          ]
+        },
+        kitchen: {
+          title: '厨房',
+          type: 'cubemap',
+          cubeMap: cube('kitchen'),
+          hotSpots: [
+            { pitch: -5, yaw: -145, type: 'scene', sceneId: 'living', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '客厅' } }
+          ]
+        },
+        stairs: {
+          title: '楼梯',
+          type: 'cubemap',
+          cubeMap: cube('stairs'),
+          hotSpots: [
+            { pitch: -5, yaw: 150, type: 'scene', sceneId: 'living', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '客厅' } },
+            { pitch: -4, yaw: -30, type: 'scene', sceneId: 'bedroom2', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '卧室2' } }
+          ]
+        },
+        bedroom1: {
+          title: '卧室1',
+          type: 'cubemap',
+          cubeMap: cube('bedroom-1'),
+          hotSpots: [
+            { pitch: -6, yaw: -120, type: 'scene', sceneId: 'living', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '客厅' } },
+            { pitch: -5, yaw: 30, type: 'scene', sceneId: 'bathroom', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '卫生间' } }
+          ]
+        },
+        bedroom2: {
+          title: '卧室2',
+          type: 'cubemap',
+          cubeMap: cube('bedroom-2'),
+          hotSpots: [
+            { pitch: -6, yaw: 150, type: 'scene', sceneId: 'stairs', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '楼梯' } },
+            { pitch: -5, yaw: 35, type: 'scene', sceneId: 'bathroom', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '卫生间' } }
+          ]
+        },
+        bathroom: {
+          title: '卫生间',
+          type: 'cubemap',
+          cubeMap: cube('bathroom'),
+          hotSpots: [
+            { pitch: -5, yaw: -80, type: 'scene', sceneId: 'bedroom1', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '卧室1' } },
+            { pitch: -5, yaw: 85, type: 'scene', sceneId: 'bedroom2', createTooltipFunc: hotspotDiv, createTooltipArgs: { label: '卧室2' } }
+          ]
+        }
+      }
+    })
+
+    document.querySelectorAll('[data-scene]').forEach((btn) => {
+      btn.addEventListener('click', () => viewer.loadScene(btn.dataset.scene))
+    })
+  </script>
+</body>
+</html>
